@@ -1,5 +1,6 @@
 <script setup>
   import PokemonCard from '@/components/PokemonCard.vue'
+  import pokemonJson from '@/assets/pokemon.json'
 </script>
 
 <template>
@@ -8,13 +9,21 @@
 
     <div class="pokemon-selector__type">
       <label for="type-select" class="pokemon-selector__type--label">Select type:</label>
-      <select name="type-select" class="pokemon-selector__type--select">
-        <option default value="Grass">Grass</option>
+      <select
+        name="type-select"
+        class="pokemon-selector__type--select"
+        @change="typeChanged"
+        v-model="type"
+      >
+        <option v-for="(pokemons, type) of pokemonJson" :key="type">
+          {{type}}
+        </option>
+        <option default value="">Select</option>
       </select>
     </div>
     
     <div class="pokemon-selector__cards">
-      <PokemonCard v-for="index in 10" :key="index"/>
+      <PokemonCard v-for="(pokemon, idx) in pokemons" :key="idx"/>
     </div>
     <div class="pokemon-selector__button">
       <button>Load</button>
@@ -29,7 +38,18 @@ export default {
   },
   data() {
     return {
+      pokemonJson,
+      type: '',
+      pokemons: [],
     }
+  },
+  mounted() {
+  },
+  methods: {
+    typeChanged() {
+      this.pokemons = pokemonJson[this.type]
+      console.log("pokemons", this.pokemons)
+    },
   }
 }
 </script>
