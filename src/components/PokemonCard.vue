@@ -1,18 +1,22 @@
 <script>
 export default {
+  props:{
+    pokemon: Object,
+    },
   data() {
     return {
+      selected: false,
     }
-  }
+  },
 }
 </script>
 
 <template>
   <div class="pokemon-cards__card">
-    <img src="https://img.pokemondb.net/sprites/x-y/normal/bulbasaur.png" alt="A pokemon">
+    <img v-bind:src="pokemon.image" alt="A pokemon">
     <div class="pokemon-cards__card--info">
-      <h2 id="pokemon-name">Name</h2>
-      <span id="pokemon-info">Information</span>
+      <h2 id="pokemon-name">{{pokemon.name}}</h2>
+      <span id="pokemon-info">{{pokemon.classfication}}</span>
     </div>
   </div>
 </template>
@@ -29,8 +33,9 @@ export default {
   .pokemon-cards__card > img {
     position: absolute;
     z-index: 1;
-    left: -20px;
-    top: -30px;
+    left: 0px;
+    top: 0px;
+    height: 60px;
   }
 
   .pokemon-cards__card--info {
@@ -40,5 +45,10 @@ export default {
   .pokemon-cards__card--info > h2 {
     font-size: medium;
     font-weight: bold;
+  }
+
+  .selected {
+    border: 2px blue solid;
+    background: lightgray;
   }
 </style>

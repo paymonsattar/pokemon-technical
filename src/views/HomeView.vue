@@ -4,7 +4,6 @@
 
 <template>
   <main>
-    Hello World
     <PokemonSelector/>
   </main>
 </template>
