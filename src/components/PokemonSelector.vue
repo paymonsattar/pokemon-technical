@@ -12,7 +12,7 @@
         :key="`image-${pokemon.name}-${i}`"
         v-bind:src="pokemon.image"
         alt="A pokemon"
-        :style="[`left: ${randomNumberBetween(50, 250)}px`, `top: ${randomNumberBetween(50, 100)}px`, `z-index: ${i + 1}`]"
+        :style="[`left: ${randomNumberBetween(20, 45)}%`, `top: ${randomNumberBetween(10, 25)}%`, `z-index: ${i + 1}`]"
       >
     </div>
     <div class="pokemon-selector__type">
@@ -89,6 +89,7 @@ export default {
 <style scoped>
   .pokemon-selector__container {
     width: 100%;
+    height: 100%;
   }
 
   .pokemon-selector__main-image {
